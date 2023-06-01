@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  /* Input */
+  .input {
+    @apply border outline-none w-full p-2 rounded-md
+  }
+
+  .input:focus {
+    @apply ring-2 ring-gray-400
+  }
+
+  /* Button */
+  .btn {
+    @apply py-2 px-10 bg-gray-700 text-white transition-all rounded-md
+  }
+
+  .btn-outline {
+    @apply border px-3 py-2 rounded-md
+  }
+
+  .btn:hover {
+    @apply bg-gray-800
+  }
+
+  .btn:active {
+    @apply scale-90
+  }
+
+  /* Error */
+  .error {
+    @apply text-red-500
+  }
+
+  /* Menu */
+  .menu {
+    @apply flex
+  }
+
+  .menu-item {
+    @apply transition-all
+  }
+
+  .menu-item:last-child::before {
+    content: '+';
+    margin-right: 3px;
+  }
+
+  .menu-item:last-child:hover::before {
+    content: '-';
+
+  }
+
+  .menu-item:hover {
+    @apply text-red-400
+  }
+
+
+
+  .menu-btn:hover .menu {
+    display: block;
+  }
+}
