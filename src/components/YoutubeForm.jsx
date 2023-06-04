@@ -5,6 +5,7 @@ const initialValues = {
     name: '',
     email: '',
     channel: '',
+    comments: '',
 }
 const onSubmit = (values, { resetForm }) => {
     console.log(values);
@@ -13,21 +14,26 @@ const onSubmit = (values, { resetForm }) => {
 const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
-    channel: Yup.string().required('Required')
+    channel: Yup.string().required('Required'),
+    comments: Yup.string().required('Required'),
 })
 
 const YoutubeForm = () => {
     return (
         <div className="h-screen px-4 lg:px-0 ">
-            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} >
+            <Formik
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                validationSchema={validationSchema}
+            >
                 <Form className="flex flex-col mt-20 lg:w-96 shadow-lg mx-auto py-10 px-10 rounded-xl">
                     <h2 className="text-3xl text-[#333] font-sans font-bold text-center mb-6">Registration Form</h2>
 
                     {/*-------- Name --------*/}
                     <label htmlFor="name" className="font-semibold mb-2">Name</label>
-                    {/* input field */}
+                    {/* input */}
                     <Field type="text" id="name" name="name" className='input' />
-                    {/* error message */}
+                    {/* error */}
                     <p className="error"><ErrorMessage name="name" /></p>
 
                     {/*-------- Email --------*/}
@@ -43,6 +49,15 @@ const YoutubeForm = () => {
                     <Field type="text" id="channel" name="channel" className='input' />
                     {/* error */}
                     <p className="error"><ErrorMessage name="channel" /></p>
+
+                    {/* Comments */}
+                    <label htmlFor="comments" className="font-semibold my-2">Comments</label>
+                    {/* textarea */}
+                    <Field id="comments" as="textarea" rows="4" name="comments" className="input" />
+                    {/* error */}
+                    <p className="error"><ErrorMessage name="comments" /></p>
+
+
 
                     {/* Button */}
                     <button type="submit" className="btn mt-4">Submit</button>
